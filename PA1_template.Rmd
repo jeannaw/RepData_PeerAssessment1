@@ -107,7 +107,7 @@ cat ("Interval ",
      sep = "")
 ```
 
-Based on previous time series plot, We plot all the maximum number of steps of each 5-minute interval with rainbow points, and especially show the maximum number steps with $\color{red}{\text{red triangle}}$.
+Based on previous time series plot, We plot all the maximum number of steps of each 5-minute interval with rainbow points, and especially show the maximum number steps with <span style="color:red">red triangle</span>.
 
 ```{r, warning=FALSE, message=FALSE, echo=TRUE}
 g <- g +

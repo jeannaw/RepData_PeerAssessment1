@@ -123,7 +123,7 @@ cat ("Interval ",
 ## Interval 615 contains the maximum number of steps 806
 ```
 
-Based on previous time series plot, We plot all the maximum number of steps of each 5-minute interval with rainbow points, and especially show the maximum number steps with $\color{red}{\text{red triangle}}$.
+Based on previous time series plot, We plot all the maximum number of steps of each 5-minute interval with rainbow points, and especially show the maximum number steps with <span style="color:red">red triangle</span>.
 
 
 ```r
@@ -278,7 +278,7 @@ cat (
 ## Are there differences in activity patterns between weekdays and weekends?
 
 1. Create a new factor variable in the dataset with two levels – “weekday” and “weekend” indicating whether a given date is a weekday or weekend day.  
-2. Make a panel plot containing a time series plot (i.e. <span style="color:red">type = "l"</span>) of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all weekday days or weekend days (y-axis). See the README file in the GitHub repository to see an example of what this plot should look like using simulated data.
+2. Make a panel plot containing a time series plot (i.e. <span style="color:red">type = "l"</span> ) of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all weekday days or weekend days (y-axis). See the README file in the GitHub repository to see an example of what this plot should look like using simulated data.
 
 
 ```r
