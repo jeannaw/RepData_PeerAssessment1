@@ -176,13 +176,13 @@ pre code {
 library(dplyr)
 library(ggplot2)
 library(lubridate)
-
 ## download from the link provided if not exists
 zipfile &lt;- &quot;repdata_data_activity.zip&quot;
 if (!file.exists(zipfile)) {
     file_url &lt;-
         &quot;https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2Factivity.zip&quot;
     download.file(file_url, zipfile, method = &quot;curl&quot;)
+    
 }
 ## unzip file if not unzipped
 if (!file.exists(&quot;activity.csv&quot;)) {
@@ -253,12 +253,18 @@ print(g)</code></pre>
 </div>
 <div id="which-5-minute-interval-on-average-across-all-the-days-in-the-dataset-contains-the-maximum-number-of-steps" class="section level4">
 <h4>2. Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?</h4>
-<p>Based on previous time series plot, We plot all the maximum number of steps of each 5-minute interval with rainbow points, and can see, for the whole interval, the maximum number steps is around the interval 0600-0630 as showed with <span class="math inline">\(\color{red}{\text{red triangle}}\)</span>.</p>
 <pre class="r"><code>## 5. The 5-minute interval that, on average, contains the maximum number of steps
 df.maxIntervalSteps &lt;-
     summarize(by_interval, maxSteps = max(steps, na.rm = T))
 top1_subset = top_n(df.maxIntervalSteps, 1, maxSteps)
-g &lt;- g +
+cat (&quot;Interval &quot;, 
+     top1_subset$interval,
+     &quot; contains the maximum number of steps &quot;, 
+     top1_subset$maxSteps, 
+     sep = &quot;&quot;)</code></pre>
+<pre><code>## Interval 615 contains the maximum number of steps 806</code></pre>
+<p>Based on previous time series plot, We plot all the maximum number of steps of each 5-minute interval with rainbow points, and especially show the maximum number steps with <span class="math inline">\(\color{red}{\text{red triangle}}\)</span>.</p>
+<pre class="r"><code>g &lt;- g +
     geom_point(data = df.maxIntervalSteps,
                aes(x = interval, y = maxSteps),
                colour = rainbow(288)) +

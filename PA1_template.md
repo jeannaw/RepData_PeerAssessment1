@@ -14,13 +14,13 @@ output:
 library(dplyr)
 library(ggplot2)
 library(lubridate)
-
 ## download from the link provided if not exists
 zipfile <- "repdata_data_activity.zip"
 if (!file.exists(zipfile)) {
     file_url <-
         "https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2Factivity.zip"
     download.file(file_url, zipfile, method = "curl")
+    
 }
 ## unzip file if not unzipped
 if (!file.exists("activity.csv")) {
@@ -105,7 +105,6 @@ print(g)
 
 #### 2. Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?  
 
-Based on previous time series plot, We plot all the maximum number of steps of each 5-minute interval with rainbow points, and can see, for the whole interval, the maximum number steps is around the interval 0600-0630 as showed with $\color{red}{\text{red triangle}}$.
 
 
 ```r
@@ -113,6 +112,21 @@ Based on previous time series plot, We plot all the maximum number of steps of e
 df.maxIntervalSteps <-
     summarize(by_interval, maxSteps = max(steps, na.rm = T))
 top1_subset = top_n(df.maxIntervalSteps, 1, maxSteps)
+cat ("Interval ", 
+     top1_subset$interval,
+     " contains the maximum number of steps ", 
+     top1_subset$maxSteps, 
+     sep = "")
+```
+
+```
+## Interval 615 contains the maximum number of steps 806
+```
+
+Based on previous time series plot, We plot all the maximum number of steps of each 5-minute interval with rainbow points, and especially show the maximum number steps with $\color{red}{\text{red triangle}}$.
+
+
+```r
 g <- g +
     geom_point(data = df.maxIntervalSteps,
                aes(x = interval, y = maxSteps),
@@ -128,7 +142,7 @@ g <- g +
 print(g)
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
+![](PA1_template_files/figure-html/unnamed-chunk-5-1.png)<!-- -->
 
 
 ## Imputing missing values
@@ -180,7 +194,7 @@ g <- ggplot (data = df.sumStepsNew, aes(x = sumSteps)) +
 print(g)
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-7-1.png)<!-- -->
+![](PA1_template_files/figure-html/unnamed-chunk-8-1.png)<!-- -->
 
 #### Report the mean and median total number of steps taken per day
 Do these values differ from the estimates from the first part of the assignment? What is the impact of imputing missing data on the estimates of the total daily number of steps?   
@@ -290,5 +304,5 @@ g <-
 print(g)
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-10-1.png)<!-- -->
+![](PA1_template_files/figure-html/unnamed-chunk-11-1.png)<!-- -->
 
