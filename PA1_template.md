@@ -1,5 +1,6 @@
 ---
 title: "Reproducible Research: Peer Assessment 1"
+date: "2021-07-02"
 output: 
   html_document:
     keep_md: true
@@ -288,7 +289,6 @@ g <-
     labs(x = "Interval", y = "Number of Steps")
 print(g)
 ```
-
 
 ![](PA1_template_files/figure-html/unnamed-chunk-10-1.png)<!-- -->
 
