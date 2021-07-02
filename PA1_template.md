@@ -289,5 +289,6 @@ g <-
 print(g)
 ```
 
+
 ![](PA1_template_files/figure-html/unnamed-chunk-10-1.png)<!-- -->
 
